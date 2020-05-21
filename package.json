@@ -10,9 +10,15 @@
     "restart": "rimraf dist && npm run start",
     "dev": "nodemon --exec npm run restart"
   },
-  "keywords": [],
   "author": "Joe Baldwin",
   "license": "ISC",
+  "engines": {
+    "node": "14.x"
+  },
+  "keywords": [
+    "vinyl",
+    "API"
+  ],
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.6",
