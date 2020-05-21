@@ -1,21 +1,36 @@
+import "@babel/polyfill";
 import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
+import vinylRouter from "./routes/vinylRouter";
 
 dotenv.config();
 
-const server = express();
+const port = process.env.PORT || 8000;
 
-const db = mongoose.connect(process.env.MONGO_SRV, {
+const app = express();
+
+// Connect to MongoDB
+mongoose.connect(process.env.MONGO_SRV, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+const db = mongoose.connection;
+db.on("error", (error) => console.error(error));
+db.once("open", () => console.log(db, "Connected to database!!"));
 
-server.get("/", (req, res) => {
+// Middleware
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+// Router
+app.use("/api", vinylRouter);
+
+app.get("/", (req, res) => {
   res.send("Homepage");
 });
 
-server.listen(8000, () => {
-  console.log("server started at http://localhost:8000");
+app.listen(port, () => {
+  console.log(`Running on port ${port}`);
 });
