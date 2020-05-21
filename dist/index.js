@@ -19,7 +19,7 @@ _dotenv["default"].config();
 var port = process.env.PORT || 8000;
 var app = (0, _express["default"])(); // Connect to MongoDB
 
-_mongoose["default"].connect(process.env.MONGO_SRV, {
+_mongoose["default"].connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
