@@ -1,3 +1,5 @@
+import Vinyl from "../models/vinylModel";
+
 class controller {
   static getAll = async (req, res) => {
     try {

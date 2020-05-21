@@ -3,7 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports["default"] = void 0;
+
+var _vinylModel = _interopRequireDefault(require("../models/vinylModel"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
@@ -26,7 +30,7 @@ _defineProperty(controller, "getAll", /*#__PURE__*/function () {
           case 0:
             _context.prev = 0;
             _context.next = 3;
-            return Vinyl.find();
+            return _vinylModel["default"].find();
 
           case 3:
             vinyls = _context.sent;
@@ -82,7 +86,7 @@ _defineProperty(controller, "post", /*#__PURE__*/function () {
       while (1) {
         switch (_context3.prev = _context3.next) {
           case 0:
-            vinyl = new Vinyl(req.body);
+            vinyl = new _vinylModel["default"](req.body);
             _context3.prev = 1;
             _context3.next = 4;
             return vinyl.save();
